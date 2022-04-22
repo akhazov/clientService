@@ -20,9 +20,20 @@ public interface ClientRepository extends CrudRepository<Client, String> {
     @Query("SELECT c FROM Client c WHERE c.id = :id")
     Client getClientById(@Param("id") String id);
 
+    /**
+     * Поиск клиента по Фамилии
+     *
+     * @param lastName идентификатор
+     * @return найденный клиент
+     */
     @Query("SELECT e FROM Client e where e.lastName = :lastName")
     Client getIDByLastName(@Param("lastName") String lastName);
 
+    /**
+     * Метод ищет всех клиентов БД
+     *
+     * @return список клиентов в формате Имя, Фамилия
+     */
     @Query("SELECT e FROM Client e")
     List<Client> getAllClient();
 

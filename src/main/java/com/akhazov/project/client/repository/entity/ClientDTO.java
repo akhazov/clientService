@@ -1,5 +1,8 @@
 package com.akhazov.project.client.repository.entity;
 
+/**
+ * DTO-класс - представление объекта Client в формате Имя, Фамилия
+ */
 public class ClientDTO {
     private String name;
     private String lastName;

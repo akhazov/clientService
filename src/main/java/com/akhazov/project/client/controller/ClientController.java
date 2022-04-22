@@ -2,11 +2,9 @@ package com.akhazov.project.client.controller;
 
 import com.akhazov.project.client.repository.entity.ClientDTO;
 import com.akhazov.project.client.service.ClientService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.processing.Generated;
 import java.util.List;
 
 @RestController
@@ -21,18 +19,24 @@ public class ClientController {
 
     @GetMapping("name/id")
     public String getClientNameById(@RequestParam("clientId") String id) {
-        String name = clientService.getClientNameById(id);
+        String name = clientService.getClientNameById ( id );
         return "Имя клиента с ID: " + id + " " + name;
     }
 
     @GetMapping("id/name")
-    public String getIdByLastName(@RequestParam("lastName") String lastName){
-        return clientService.getIdByLastName(lastName);
+    public String getIdByLastName(@RequestParam("lastName") String lastName) {
+        return "ID клиента по фамилии " + lastName + ": " + clientService.getIdByLastName ( lastName );
     }
 
     @GetMapping("allClient")
-    public List<ClientDTO> getAllClient(){
-        return clientService.getAllClient();
+    public List<ClientDTO> getAllClient() {
+        return clientService.getAllClient ();
+    }
+
+    @PostMapping("newClient")
+    public String newClient(@RequestParam("name") String name, @RequestParam("lastName") String lastName) {
+        clientService.newClient ( name, lastName );
+        return "Клиент " + lastName + " добавлен";
     }
 
 }
