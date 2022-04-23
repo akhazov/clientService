@@ -1,12 +1,15 @@
 package com.akhazov.project.client.repository.entity;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "clients")
 public class Client {
     @Id
-    @GeneratedValue
+    @GeneratedValue(generator = "uuid_gen")
+    @GenericGenerator(name = "uuid_gen", strategy = "uuid")
     private String id;
     private String name;
     @Column(name = "last_name")
