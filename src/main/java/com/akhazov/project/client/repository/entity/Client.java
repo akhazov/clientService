@@ -12,6 +12,14 @@ public class Client {
     @Column(name = "last_name")
     private String lastName;
 
+    public Client() {}
+
+    private Client(Builder builder) {
+        this.id = builder.id;
+        this.name = builder.name;
+        this.lastName = builder.lastName;
+    }
+
     public String getId() {
         return id;
     }
@@ -44,4 +52,33 @@ public class Client {
                 ", lastName='" + lastName + '\'' +
                 '}';
     }
+
+    /**
+     * Билдер для создания экземпляра класса.
+     */
+    public static class Builder {
+        private String id;
+        private String name;
+        private String lastName;
+
+        public Builder withId(String id) {
+            this.id = id;
+            return this;
+        }
+
+        public Builder withName(String name) {
+            this.name = name;
+            return  this;
+        }
+
+        public Builder withLastName(String lastName) {
+            this.lastName = lastName;
+            return this;
+        }
+
+        public Client build() {
+            return new Client(this);
+        }
+    }
+
 }
