@@ -1,7 +1,7 @@
 spring:
   datasource:
     driver-class-name: org.h2.Driver
-    url: jdbc:h2:file:./src/main/resources/db/client;AUTO_SERVER=true
+    url: jdbc:h2:file:./.h2/db/client;AUTO_SERVER=true
     username: sa
     password:
   jpa:
