@@ -7,16 +7,24 @@ import javax.persistence.*;
 public class Client {
     @Id
     @GeneratedValue
-    private String id;
+    private Long id;
     private String name;
     @Column(name = "last_name")
     private String lastName;
 
-    public String getId() {
+    public Client() {}
+
+    private Client(Builder builder) {
+        this.id = builder.id;
+        this.name = builder.name;
+        this.lastName = builder.lastName;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -44,4 +52,33 @@ public class Client {
                 ", lastName='" + lastName + '\'' +
                 '}';
     }
+
+    /**
+     * Билдер для создания экземпляра класса.
+     */
+    public static class Builder {
+        private Long id;
+        private String name;
+        private String lastName;
+
+        public Builder withId(Long id) {
+            this.id = id;
+            return this;
+        }
+
+        public Builder withName(String name) {
+            this.name = name;
+            return  this;
+        }
+
+        public Builder withLastName(String lastName) {
+            this.lastName = lastName;
+            return this;
+        }
+
+        public Client build() {
+            return new Client(this);
+        }
+    }
+
 }

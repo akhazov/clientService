@@ -18,13 +18,13 @@ public class FindClientService implements ClientService {
     }
 
     @Override
-    public String getClientNameById(String id) {
+    public String getClientNameById(Long id) {
         Client client = repository.getClientById(id);
         return client.getName();
     }
 
     @Override
-    public String getIdByLastName(String lastName) {
+    public Long getIdByLastName(String lastName) {
         Client client = repository.getIDByLastName(lastName);
         return  client.getId();
     }
