@@ -1,16 +1,13 @@
 package com.akhazov.project.client.repository.entity;
 
-import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
 
 @Entity
 @Table(name = "clients")
 public class Client {
     @Id
-    @GeneratedValue(generator = "uuid_gen")
-    @GenericGenerator(name = "uuid_gen", strategy = "uuid")
-    private String id;
+    @GeneratedValue
+    private Long id;
     private String name;
     @Column(name = "last_name")
     private String lastName;
@@ -23,11 +20,11 @@ public class Client {
         this.lastName = builder.lastName;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -60,11 +57,11 @@ public class Client {
      * Билдер для создания экземпляра класса.
      */
     public static class Builder {
-        private String id;
+        private Long id;
         private String name;
         private String lastName;
 
-        public Builder withId(String id) {
+        public Builder withId(Long id) {
             this.id = id;
             return this;
         }
