@@ -15,7 +15,7 @@ public interface ClientService {
      * @param id идентификатор
      * @return Имя клиента
      */
-    String getClientNameById(String id);
+    String getClientNameById(Long id);
 
     /**
      * Возвращает id клиента по Фамилии.
@@ -23,7 +23,7 @@ public interface ClientService {
      * @param lastName идентификатор
      * @return id клиента
      */
-    String getIdByLastName(String lastName);
+    Long getIdByLastName(String lastName);
 
     /**
      * Возвращает всех клиентов.

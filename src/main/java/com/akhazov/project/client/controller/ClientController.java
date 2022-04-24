@@ -18,19 +18,19 @@ public class ClientController {
     }
 
     @GetMapping("name/id")
-    public String getClientNameById(@RequestParam("clientId") String id) {
-        String name = clientService.getClientNameById ( id );
+    public String getClientNameById(@RequestParam("clientId") Long id) {
+        String name = clientService.getClientNameById(id);
         return "Имя клиента с ID: " + id + " " + name;
     }
 
     @GetMapping("id/name")
-    public String getIdByLastName(@RequestParam("lastName") String lastName) {
-        return "ID клиента по фамилии " + lastName + ": " + clientService.getIdByLastName ( lastName );
+    public Long getIdByLastName(@RequestParam("lastName") String lastName){
+        return clientService.getIdByLastName(lastName);
     }
 
     @GetMapping("allClient")
-    public List<ClientDTO> getAllClient() {
-        return clientService.getAllClient ();
+    public List<ClientDTO> getAllClient(){
+        return clientService.getAllClient();
     }
 
     @PostMapping("newClient")

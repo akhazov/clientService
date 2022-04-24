@@ -8,16 +8,12 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Сервис поиска клиетов в БД по параметрам
- */
-
 @Service
-public class FindAndAddClientService implements ClientService {
+public class FindClientService implements ClientService {
 
     private final ClientRepository repository;
 
-    public FindAndAddClientService(ClientRepository repository) {
+    public FindClientService(ClientRepository repository) {
         this.repository = repository;
     }
 
@@ -28,9 +24,9 @@ public class FindAndAddClientService implements ClientService {
      * @return найденный клиент
      */
     @Override
-    public String getClientNameById(String id) {
-        Client client = repository.getClientById ( id );
-        return client.getName ();
+    public String getClientNameById(Long id) {
+        Client client = repository.getClientById(id);
+        return client.getName();
     }
 
     /**
@@ -40,9 +36,9 @@ public class FindAndAddClientService implements ClientService {
      * @return найденный клиент
      */
     @Override
-    public String getIdByLastName(String lastName) {
-        Client client = repository.getIDByLastName ( lastName );
-        return client.getId ();
+    public Long getIdByLastName(String lastName) {
+        Client client = repository.getIDByLastName(lastName);
+        return  client.getId();
     }
 
     /**
@@ -52,10 +48,10 @@ public class FindAndAddClientService implements ClientService {
      */
     @Override
     public List<ClientDTO> getAllClient() {
-        List<Client> allClient = repository.getAllClient ();
-        List<ClientDTO> dtoClient = new ArrayList<> ();
+        List<Client> allClient = repository.getAllClient();
+        List<ClientDTO> dtoClient = new ArrayList<>();
         for (Client client : allClient) {
-            dtoClient.add ( mapToClientDTO ( client ) );
+            dtoClient.add(mapToClientDTO(client));
         }
         return dtoClient;
     }
@@ -76,11 +72,12 @@ public class FindAndAddClientService implements ClientService {
      * @param client сущность БД
      * @return новая сущность
      */
-    public ClientDTO mapToClientDTO(Client client) {
-        ClientDTO dto = new ClientDTO ();
-        dto.setName ( client.getName () );
-        dto.setLastName ( client.getLastName () );
+    public ClientDTO mapToClientDTO (Client client){
+        ClientDTO dto = new ClientDTO();
+        dto.setName(client.getName());
+        dto.setLastName(client.getLastName());
         return dto;
     }
+
 
 }

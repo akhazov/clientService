@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ClientRepository extends CrudRepository<Client, String> {
+public interface ClientRepository extends CrudRepository<Client, Long> {
 
     /**
      * Возвращает клиента по идентификатору.
@@ -18,7 +18,7 @@ public interface ClientRepository extends CrudRepository<Client, String> {
      * @return найденый клиент
      */
     @Query("SELECT c FROM Client c WHERE c.id = :id")
-    Client getClientById(@Param("id") String id);
+    Client getClientById(@Param("id") Long id);
 
     /**
      * Поиск клиента по Фамилии
