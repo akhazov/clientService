@@ -20,13 +20,13 @@ public class ClientController {
     }
 
     @GetMapping("name/id")
-    public String getClientNameById(@RequestParam("clientId") String id) {
+    public String getClientNameById(@RequestParam("clientId") Long id) {
         String name = clientService.getClientNameById(id);
         return "Имя клиента с ID: " + id + " " + name;
     }
 
     @GetMapping("id/name")
-    public String getIdByLastName(@RequestParam("lastName") String lastName){
+    public Long getIdByLastName(@RequestParam("lastName") String lastName){
         return clientService.getIdByLastName(lastName);
     }
 
