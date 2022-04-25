@@ -25,8 +25,8 @@ public class FindClientService implements ClientService {
      */
     @Override
     public String getClientNameById(Long id) {
-        Client client = repository.getClientById(id);
-        return client.getName();
+        Client client = repository.getClientById ( id );
+        return client.getName ();
     }
 
     /**
@@ -37,8 +37,8 @@ public class FindClientService implements ClientService {
      */
     @Override
     public Long getIdByLastName(String lastName) {
-        Client client = repository.getIDByLastName(lastName);
-        return  client.getId();
+        Client client = repository.getIDByLastName ( lastName );
+        return client.getId ();
     }
 
     /**
@@ -48,22 +48,26 @@ public class FindClientService implements ClientService {
      */
     @Override
     public List<ClientDTO> getAllClient() {
-        List<Client> allClient = repository.getAllClient();
-        List<ClientDTO> dtoClient = new ArrayList<>();
+        List<Client> allClient = repository.getAllClient ();
+        List<ClientDTO> dtoClient = new ArrayList<> ();
         for (Client client : allClient) {
-            dtoClient.add(mapToClientDTO(client));
+            dtoClient.add ( mapToClientDTO ( client ) );
         }
         return dtoClient;
     }
 
     /**
      * Добавление нового клиента в БД
-     * @param name Имя клиента
+     *
+     * @param name     Имя клиента
      * @param lastName Фамилия клиента
+     * @return ID клиента в строковом представлении
      */
     @Override
-    public void newClient(String name, String lastName) {
-        repository.save (new Client (name,lastName));
+    public String newClient(String name, String lastName) {
+        Client client = new Client ( name, lastName );
+        repository.save ( client );
+        return "clientId\": " + client.getId () + "\"";
     }
 
     /**
@@ -72,10 +76,10 @@ public class FindClientService implements ClientService {
      * @param client сущность БД
      * @return новая сущность
      */
-    public ClientDTO mapToClientDTO (Client client){
-        ClientDTO dto = new ClientDTO();
-        dto.setName(client.getName());
-        dto.setLastName(client.getLastName());
+    public ClientDTO mapToClientDTO(Client client) {
+        ClientDTO dto = new ClientDTO ();
+        dto.setName ( client.getName () );
+        dto.setLastName ( client.getLastName () );
         return dto;
     }
 

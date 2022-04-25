@@ -33,7 +33,7 @@ public class ClientController {
         return clientService.getAllClient();
     }
 
-    @PostMapping("newClient")
+    @PostMapping("api/v1/client/new")
     public String newClient(@RequestParam("name") String name, @RequestParam("lastName") String lastName) {
         clientService.newClient ( name, lastName );
         return "Клиент " + lastName + " добавлен";
