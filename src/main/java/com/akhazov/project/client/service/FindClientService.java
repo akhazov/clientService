@@ -2,7 +2,7 @@ package com.akhazov.project.client.service;
 
 import com.akhazov.project.client.repository.ClientRepository;
 import com.akhazov.project.client.repository.entity.Client;
-import com.akhazov.project.client.repository.entity.ClientDTO;
+import com.akhazov.project.client.model.dto.ClientDTO;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -25,8 +25,8 @@ public class FindClientService implements ClientService {
      */
     @Override
     public String getClientNameById(Long id) {
-        Client client = repository.getClientById ( id );
-        return client.getName ();
+        Client client = repository.getClientById(id);
+        return client.getName();
     }
 
     /**
@@ -37,8 +37,8 @@ public class FindClientService implements ClientService {
      */
     @Override
     public Long getIdByLastName(String lastName) {
-        Client client = repository.getIDByLastName ( lastName );
-        return client.getId ();
+        Client client = repository.getIDByLastName(lastName);
+        return client.getId();
     }
 
     /**
@@ -48,10 +48,10 @@ public class FindClientService implements ClientService {
      */
     @Override
     public List<ClientDTO> getAllClient() {
-        List<Client> allClient = repository.getAllClient ();
-        List<ClientDTO> dtoClient = new ArrayList<> ();
+        List<Client> allClient = repository.getAllClient();
+        List<ClientDTO> dtoClient = new ArrayList<>();
         for (Client client : allClient) {
-            dtoClient.add ( mapToClientDTO ( client ) );
+            dtoClient.add(mapToClientDTO(client));
         }
         return dtoClient;
     }
@@ -65,9 +65,9 @@ public class FindClientService implements ClientService {
      */
     @Override
     public String newClient(String name, String lastName) {
-        Client client = new Client ( name, lastName );
-        repository.save ( client );
-        return "clientId\": " + client.getId () + "\"";
+        Client client = new Client(name, lastName);
+        repository.save(client);
+        return "clientId\": " + client.getId() + "\"";
     }
 
     /**
@@ -77,9 +77,9 @@ public class FindClientService implements ClientService {
      * @return новая сущность
      */
     public ClientDTO mapToClientDTO(Client client) {
-        ClientDTO dto = new ClientDTO ();
-        dto.setName ( client.getName () );
-        dto.setLastName ( client.getLastName () );
+        ClientDTO dto = new ClientDTO();
+        dto.setName(client.getName());
+        dto.setLastName(client.getLastName());
         return dto;
     }
 

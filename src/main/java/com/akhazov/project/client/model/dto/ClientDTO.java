@@ -1,4 +1,4 @@
-package com.akhazov.project.client.repository.entity;
+package com.akhazov.project.client.model.dto;
 
 /**
  * DTO-класс - представление объекта Client в формате Имя, Фамилия

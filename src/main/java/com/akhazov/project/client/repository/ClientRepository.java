@@ -21,7 +21,7 @@ public interface ClientRepository extends CrudRepository<Client, Long> {
     Client getClientById(@Param("id") Long id);
 
     /**
-     * Поиск клиента по Фамилии
+     * Поиск клиента по Фамилии.
      *
      * @param lastName идентификатор
      * @return найденный клиент
@@ -30,7 +30,7 @@ public interface ClientRepository extends CrudRepository<Client, Long> {
     Client getIDByLastName(@Param("lastName") String lastName);
 
     /**
-     * Метод ищет всех клиентов БД
+     * Метод ищет всех клиентов БД.
      *
      * @return список клиентов в формате Имя, Фамилия
      */

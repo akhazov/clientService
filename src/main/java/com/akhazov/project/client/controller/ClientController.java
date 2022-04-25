@@ -1,10 +1,9 @@
 package com.akhazov.project.client.controller;
 
-import com.akhazov.project.client.repository.entity.ClientDTO;
+import com.akhazov.project.client.model.dto.ClientDTO;
 import com.akhazov.project.client.service.ClientService;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.processing.Generated;
 import java.util.List;
 
 @RestController
@@ -24,18 +23,18 @@ public class ClientController {
     }
 
     @GetMapping("id/name")
-    public Long getIdByLastName(@RequestParam("lastName") String lastName){
+    public Long getIdByLastName(@RequestParam("lastName") String lastName) {
         return clientService.getIdByLastName(lastName);
     }
 
     @GetMapping("allClient")
-    public List<ClientDTO> getAllClient(){
+    public List<ClientDTO> getAllClient() {
         return clientService.getAllClient();
     }
 
     @PostMapping("api/v1/client/new")
     public String newClient(@RequestParam("name") String name, @RequestParam("lastName") String lastName) {
-        clientService.newClient ( name, lastName );
+        clientService.newClient(name, lastName);
         return "Клиент " + lastName + " добавлен";
     }
 

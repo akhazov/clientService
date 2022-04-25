@@ -1,6 +1,6 @@
 package com.akhazov.project.client.service;
 
-import com.akhazov.project.client.repository.entity.ClientDTO;
+import com.akhazov.project.client.model.dto.ClientDTO;
 
 import java.util.List;
 
@@ -34,7 +34,8 @@ public interface ClientService {
 
     /**
      * Добавление нового клиента в БД
-     * @param name Имя клиента
+     *
+     * @param name     Имя клиента
      * @param lastName Фамилия клиента
      * @return Id клиента
      */
