@@ -18,7 +18,7 @@ public class FindClientService implements ClientService {
     }
 
     /**
-     * Поиск клиента по идентификатору
+     * Поиск клиента по идентификатору.
      *
      * @param id идентификатор
      * @return найденный клиент
@@ -30,7 +30,7 @@ public class FindClientService implements ClientService {
     }
 
     /**
-     * Поиск клиента по Фамилии
+     * Поиск клиента по Фамилии.
      *
      * @param lastName идентификатор
      * @return найденный клиент
@@ -42,7 +42,7 @@ public class FindClientService implements ClientService {
     }
 
     /**
-     * Метод ищет всех клиентов БД
+     * Метод ищет всех клиентов БД.
      *
      * @return список клиентов в формате Имя, Фамилия
      */
@@ -57,7 +57,7 @@ public class FindClientService implements ClientService {
     }
 
     /**
-     * Добавление нового клиента в БД
+     * Добавление нового клиента в БД.
      *
      * @param name     Имя клиента
      * @param lastName Фамилия клиента
@@ -67,11 +67,11 @@ public class FindClientService implements ClientService {
     public String newClient(String name, String lastName) {
         Client client = new Client(name, lastName);
         repository.save(client);
-        return "clientId\": " + client.getId() + "\"";
+        return String.valueOf(client.getId());
     }
 
     /**
-     * Метод преобразует сущность в формат Имя, Фамилия
+     * Метод преобразует сущность в формат Имя, Фамилия.
      *
      * @param client сущность БД
      * @return новая сущность

@@ -1,7 +1,7 @@
 package com.akhazov.project.client.model.dto;
 
 /**
- * DTO-класс - представление объекта Client в формате Имя, Фамилия
+ * DTO-класс - представление объекта Client в формате Имя, Фамилия.
  */
 public class ClientDTO {
     private String name;

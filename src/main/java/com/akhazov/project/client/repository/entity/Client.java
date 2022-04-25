@@ -6,18 +6,19 @@ import javax.persistence.*;
 @Table(name = "clients")
 public class Client {
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     @Column(name = "last_name")
     private String lastName;
 
-    public Client( String name, String lastName) {
+    public Client(String name, String lastName) {
         this.name = name;
         this.lastName = lastName;
     }
 
-    public Client(){}
+    public Client() {
+    }
 
     private Client(Builder builder) {
         this.id = builder.id;
@@ -52,10 +53,10 @@ public class Client {
     @Override
     public String toString() {
         return "Client{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", lastName='" + lastName + '\'' +
-                '}';
+            "id='" + id + '\'' +
+            ", name='" + name + '\'' +
+            ", lastName='" + lastName + '\'' +
+            '}';
     }
 
     /**
@@ -73,7 +74,7 @@ public class Client {
 
         public Builder withName(String name) {
             this.name = name;
-            return  this;
+            return this;
         }
 
         public Builder withLastName(String lastName) {
