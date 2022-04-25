@@ -1,16 +1,13 @@
 package com.akhazov.project.client.controller;
 
-import com.akhazov.project.client.repository.entity.ClientDTO;
+import com.akhazov.project.client.model.dto.ClientDTO;
 import com.akhazov.project.client.service.ClientService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("client/")
+@RequestMapping("api/v1/client/")
 public class ClientController {
 
     private final ClientService clientService;
@@ -19,20 +16,26 @@ public class ClientController {
         this.clientService = clientService;
     }
 
-    @GetMapping("name/id")
+    @GetMapping("/name/id")
     public String getClientNameById(@RequestParam("clientId") Long id) {
         String name = clientService.getClientNameById(id);
         return "Имя клиента с ID: " + id + " " + name;
     }
 
-    @GetMapping("id/name")
-    public Long getIdByLastName(@RequestParam("lastName") String lastName){
+    @GetMapping("/id/name")
+    public Long getIdByLastName(@RequestParam("lastName") String lastName) {
         return clientService.getIdByLastName(lastName);
     }
 
-    @GetMapping("allClient")
-    public List<ClientDTO> getAllClient(){
+    @GetMapping("/allClient")
+    public List<ClientDTO> getAllClient() {
         return clientService.getAllClient();
+    }
+
+    @PostMapping("/new")
+    public String newClient(@RequestBody ClientDTO client) {
+        String idClient = clientService.newClient(client);
+        return "Клиент " + idClient + " добавлен";
     }
 
 }
