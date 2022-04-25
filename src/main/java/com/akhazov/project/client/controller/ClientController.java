@@ -1,14 +1,13 @@
 package com.akhazov.project.client.controller;
 
 import com.akhazov.project.client.model.dto.ClientDTO;
-import com.akhazov.project.client.repository.entity.Client;
 import com.akhazov.project.client.service.ClientService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/client")
+@RequestMapping("api/v1/client/")
 public class ClientController {
 
     private final ClientService clientService;
@@ -34,8 +33,9 @@ public class ClientController {
     }
 
     @PostMapping("/new")
-    public String newClient(@RequestBody Client client) {
-        return "clientId: \"" + clientService.newClient(client.getName(), client.getLastName()) + "\"";
+    public String newClient(@RequestBody ClientDTO client) {
+        String idClient = clientService.newClient(client);
+        return "Клиент " + idClient + " добавлен";
     }
 
 }

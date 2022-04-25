@@ -20,6 +20,7 @@ public class Client {
     public Client() {
     }
 
+
     private Client(Builder builder) {
         this.id = builder.id;
         this.name = builder.name;

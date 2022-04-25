@@ -1,8 +1,8 @@
 package com.akhazov.project.client.service;
 
+import com.akhazov.project.client.model.dto.ClientDTO;
 import com.akhazov.project.client.repository.ClientRepository;
 import com.akhazov.project.client.repository.entity.Client;
-import com.akhazov.project.client.model.dto.ClientDTO;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -59,13 +59,12 @@ public class FindClientService implements ClientService {
     /**
      * Добавление нового клиента в БД.
      *
-     * @param name     Имя клиента
-     * @param lastName Фамилия клиента
+     * @param clientDTO Клиент
      * @return ID клиента в строковом представлении
      */
     @Override
-    public String newClient(String name, String lastName) {
-        Client client = new Client(name, lastName);
+    public String newClient(ClientDTO clientDTO) {
+        Client client = new Client(clientDTO.getName(), clientDTO.getLastName());
         repository.save(client);
         return String.valueOf(client.getId());
     }
@@ -82,6 +81,5 @@ public class FindClientService implements ClientService {
         dto.setLastName(client.getLastName());
         return dto;
     }
-
 
 }

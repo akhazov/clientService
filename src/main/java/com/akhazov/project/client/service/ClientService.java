@@ -35,9 +35,8 @@ public interface ClientService {
     /**
      * Добавление нового клиента в БД
      *
-     * @param name     Имя клиента
-     * @param lastName Фамилия клиента
+     * @param client Клиент
      * @return Id клиента
      */
-    String newClient(String name, String lastName);
+    String newClient(ClientDTO client);
 }
